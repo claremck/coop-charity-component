@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Coop Fundraising</title>
+
+    <meta name="description" content="Donate to your chosen charity">
+
+	<!--build:css css/styles.min.css-->
+	<link rel="stylesheet" href="css/styles.css">
+	<!--endbuild-->
+    
+	
+    <!--[if lte IE 8]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+    <main id="main" class="main wrap" role="main">	
+			<div class=row>
+					<div class="column medium-8 large-5 xlarge-4 medium-offset-1 max-510">
+					<article class="tile charity-donation">
+						<div class="text">
+							<h3>Help refugees rebuild their lives and communities in Manchester</h3>
+							<p>Manchester Refugee Support Network (MRSN)</p>
+						</div>
+						<div role="progressbar" class="progressbar">
+							<div class="bar"></div>
+						</div>
+						<div class="row">
+							<div class="column xsmall-6">
+								<p>Raised so far<br/>
+								<strong>£<span class="raised">2792.55</span></strong>
+								</p>
+							</div>
+							<div class="column xsmall-6">
+								<p>Target<br/>
+								<strong>£<span class="total">4500</span></strong>
+								</p>
+							</div>
+						</div>					
+								<form class="form-row" action="/donate">
+									<fieldset>
+										<p>Donate to this project</p>
+										<div class=row>
+											<div class="form-row column xsmall-7 small-8">
+											
+												<div class="amount">
+													<span class="currency">£</span>
+													<input type="text" id="amount" />
+												</div>
+											</div>
+											<div class="form-row column xsmall-5 small-4 btn-container">
+												<button name="button" type="submit" class="btn-primary-dark btn-medium btn-donate">Donate</button>
+											</div>
+										</div>
+									</fieldset>	
+								</form>							
+								<div class="cta">						
+									<a href="https://www.coop.co.uk/membership/local-community-fund">Learn more about causes local to you</a>							
+								</div>							
+						</article><!--.charity-donation-->
+					</div><!--/.column-->
+				</div><!--/.row-->
+	
+    </main>
+
+	<script src="https://code.jquery.com/jquery-1.12.1.min.js" integrity="sha256-I1nTg78tSrZev3kjvfdM5A5Ak/blglGzlaZANLPDl3I=" crossorigin="anonymous"></script>
+	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.1.min.js"><\/script>')</script>
+
+	<!--build:js js/main.min.js -->
+	<script src="js/forms_storage.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/progress_bar.js"></script>
+	<!-- endbuild -->
+    
+
+</body>
+
+</html>
