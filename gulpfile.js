@@ -12,40 +12,40 @@ var runSequence = require('run-sequence');
 
 // Sass and globbing
 gulp.task('sass', function() {
-  return gulp.src('app/scss/styles.scss') // Gets styles.scss
+  return gulp.src('src/scss/styles.scss') // Gets styles.scss
       .pipe(sass().on('error', sass.logError)) // Passes it through a gulp-sass, log errors to console
-    .pipe(gulp.dest('app/css'))
+    .pipe(gulp.dest('src/css'))
 });
 
 // Minify js and css
 gulp.task('useref', function(){
-  return gulp.src('app/*.html')
+  return gulp.src('src/*.html')
     .pipe(useref())
     .pipe(gulpIf('*.js', uglify()))
     // Minifies only if it's a CSS file
     .pipe(gulpIf('*.css', cssnano()))
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest('build'))
 });
 
 // Optimise images
 gulp.task('images', function(){
-  return gulp.src('app/images/**/*.+(png|jpg|jpeg|gif|svg)')
+  return gulp.src('src/images/**/*.+(png|jpg|jpeg|gif|svg)')
   // Caching images that ran through imagemin
   .pipe(cache(imagemin({
       interlaced: true
     })))
-  .pipe(gulp.dest('dist/images'))
+  .pipe(gulp.dest('build/images'))
 });
 
 // Copying fonts
 gulp.task('fonts', function() {
-  return gulp.src('app/fonts/**/*')
-  .pipe(gulp.dest('dist/fonts'))
+  return gulp.src('src/fonts/**/*')
+  .pipe(gulp.dest('build/fonts'))
 })
 
 // remove unused files
-gulp.task('clean:dist', function() {
-  return del.sync('dist');
+gulp.task('clean:build', function() {
+  return del.sync('build');
 })
 
 // clear cache
@@ -59,7 +59,7 @@ return cache.clearAll(callback)
 
 // Gulp watch 
 gulp.task('watch', ['sass'], function (){
-  gulp.watch('app/scss/**/*.scss', ['sass']); 
+  gulp.watch('src/scss/**/*.scss', ['sass']); 
   // Other watchers
 });
 
@@ -72,7 +72,7 @@ gulp.task('default', function (callback) {
 
 // Gulp build
 gulp.task('build', function (callback) {
-  runSequence('clean:dist', 
+  runSequence('clean:build', 
     ['sass', 'useref', 'images', 'fonts'],
     callback
   )
