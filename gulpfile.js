@@ -10,36 +10,9 @@ var del = require('del');
 var runSequence = require('run-sequence');
 
 
-gulp.task('sass', function() {
-  return gulp.src('app/scss/**/*.scss') // Gets all files ending with .scss in app/scss and children dirs
-    .pipe(sass())
-    .pipe(gulp.dest('app/css'))
-})
-
-// gulp default
-gulp.task('default', function (callback) {
-  runSequence(['sass', 'watch'],
-    callback
-  )
-})
-
-// Gulp watch 
-gulp.task('watch', ['sass'], function (){
-  gulp.watch('app/scss/**/*.scss', ['sass']); 
-  // Other watchers
-});
-
-// Gulp build
-gulp.task('build', function (callback) {
-  runSequence('clean:dist', 
-    ['sass', 'useref', 'images', 'fonts'],
-    callback
-  )
-})
-
 // Sass and globbing
 gulp.task('sass', function() {
-  return gulp.src('app/scss/**/*.scss') // Gets all files ending with .scss in app/scss
+  return gulp.src('app/scss/styles.scss') // Gets styles.scss
       .pipe(sass().on('error', sass.logError)) // Passes it through a gulp-sass, log errors to console
     .pipe(gulp.dest('app/css'))
 });
@@ -80,3 +53,27 @@ gulp.task('cache:clear', function (callback) {
 return cache.clearAll(callback)
 })
 
+/*
+* Build tasks
+*/
+
+// Gulp watch 
+gulp.task('watch', ['sass'], function (){
+  gulp.watch('app/scss/**/*.scss', ['sass']); 
+  // Other watchers
+});
+
+// Gulp default
+gulp.task('default', function (callback) {
+  runSequence(['sass', 'watch'],
+    callback
+  )
+})
+
+// Gulp build
+gulp.task('build', function (callback) {
+  runSequence('clean:dist', 
+    ['sass', 'useref', 'images', 'fonts'],
+    callback
+  )
+})
